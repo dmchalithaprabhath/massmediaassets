@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Favicon for the website -->
+  <link rel="icon" type="image/png" href="Mass_Media_favicon.png">
+<title>Map Viewer</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .header {
+    background-color: #333;
+    color: white;
+    padding: 0px 10px;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+    border-bottom: 2px solid palevioletred; /* Pale amethyst color outline */
+  }
+  .header button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    outline: none;
+  }
+  .header button:hover, .header button.active {
+    background-color: #575757;
+    outline: 2px solid palevioletred; /* Pale amethyst color outline */
+  }
+  .header .title {
+    flex-grow: 1;
+    text-align: center;
+  }
+  .header img {
+    height: 50px; /* or your preferred size */
+	padding: 5px 20px; /* Reduced padding to accommodate larger logo */
+  }
+  .header img {
+    max-height: 50px; /* Adjust the height to fit the header */
+    width: auto; /* Maintain aspect ratio */
+    margin-left: auto; /* Push the image to the right */
+  }
+  #mapFrame {
+    width: 100%;
+    height: calc(100% - 52px); /* Adjusted for header height and border */
+    border: none;
+    position: absolute;
+    top: 52px; /* Adjusted for header height and border */
+    left: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <button id="googleMapBtn" class="button active" onclick="showGoogleMap()">Google Map</button>
+    <button id="customMapBtn" class="button" onclick="showCustomMap()">Custom Map</button>
+  </div>
+  <div class="title">Mass Media Outdoor Digital Locations across the UK</div>
+  <img src="Mass_Media_White.png" alt="Company Logo"> <!-- Company logo added here -->
+</div>
+
+<iframe id="mapFrame" src="https://www.google.com/maps/d/u/0/embed?mid=1MWK6_jIbvUI1wpBUlCkh0YOEmEpG7Sk&ehbc=2E312F"></iframe>
+
+<script>
+  function showGoogleMap() {
+    document.getElementById('mapFrame').src = "https://www.google.com/maps/d/u/0/embed?mid=1MWK6_jIbvUI1wpBUlCkh0YOEmEpG7Sk&ehbc=2E312F";
+    setActiveButton('googleMapBtn');
+  }
+
+  function showCustomMap() {
+    // Replace with your Folium map URL
+    document.getElementById('mapFrame').src = "your_folium_map_url_here";
+    setActiveButton('customMapBtn');
+  }
+
+  function setActiveButton(buttonId) {
+    // Remove active class from all buttons
+    document.querySelectorAll('.button').forEach(button => {
+      button.classList.remove('active');
+    });
+    
+    // Add active class to the button that was clicked
+    document.getElementById(buttonId).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
