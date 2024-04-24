@@ -2,12 +2,12 @@ import pandas as pd
 import folium
 from folium.plugins import MarkerCluster
 
-# Assuming 'data.xlsx' is in the root directory of the repository
-excel_path = 'data.xlsx'
+# Assuming 'data.csv' is in the root directory of the repository
+excel_path = 'data.csv'
 html_output_path = 'custom.html'
 
 # Load the Excel data into a DataFrame
-df = pd.read_excel(excel_path)
+df = pd.read_csv(excel_path)
 
 # Initialize a map centered around the average latitude and longitude of the points
 map_center = [df['Latitude'].mean(), df['Longitude'].mean()]
