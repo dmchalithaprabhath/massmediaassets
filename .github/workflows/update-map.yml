@@ -1,0 +1,34 @@
+name: Update Map
+
+on:
+  push:
+    paths:
+      - 'data.xlsx'
+
+jobs:
+  update_map:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas folium openpyxl
+
+      - name: Generate the map
+        run: python generate_map.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "GitHub Action"
+          git add custom.html
+          git commit -m "Automatically update map" -a || echo "No changes to commit"
+          git push
