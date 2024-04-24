@@ -3,7 +3,7 @@ name: Update Map
 on:
   push:
     paths:
-      - 'data.xlsx'
+      - 'data.csv'
 
 jobs:
   update_map:
@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pandas folium openpyxl
+          pip install pandas folium
 
       - name: Generate the map
         run: python generate_map.py
