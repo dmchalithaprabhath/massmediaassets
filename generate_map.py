@@ -2,7 +2,7 @@ import pandas as pd
 import folium
 from folium.plugins import MarkerCluster
 
-# Paths to the Excel file and output HTML file
+# Assuming 'data.xlsx' is in the root directory of the repository
 excel_path = 'data.xlsx'
 html_output_path = 'custom.html'
 
