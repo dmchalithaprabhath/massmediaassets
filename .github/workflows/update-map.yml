@@ -4,7 +4,10 @@ on:
   push:
     paths:
       - 'data.csv'
-
+      
+permissions:
+  contents: write
+  
 jobs:
   update_map:
     runs-on: ubuntu-latest
